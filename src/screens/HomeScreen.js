@@ -41,7 +41,7 @@ const HomeScreen = () => {
 
   const handleSelectCity = city => {
     setQuery(city);
-    dispatch(fetchWeather({city: city}));
+    dispatch(fetchWeather({city: city, value: value}));
   };
   const handleIncrease = () => {
     const newValue = value + 4;
@@ -176,6 +176,8 @@ const HomeScreen = () => {
           </Text>
         </View>
       )}
+
+{currentWeather ? (
       <View
         style={{
           alignItems: 'center',
@@ -193,6 +195,7 @@ const HomeScreen = () => {
           <ArrowCircleRight size="20" color="#342564" />
         </TouchableOpacity>
       </View>
+):("")}
 
       <View
         style={{

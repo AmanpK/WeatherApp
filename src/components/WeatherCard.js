@@ -26,7 +26,7 @@ const WeatherCard = ({
       <Image style={{width: 50, height: 50}} source={imageSource} />
 
       <Text style={style.dayText}>{temperature}</Text>
-      <Text style={style.dayText}>{condition}</Text>
+      <Text style={style.dayText}numberOfLines={1}>{condition}</Text>
     </TouchableOpacity>
   );
 };
