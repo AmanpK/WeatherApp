@@ -1,79 +1,44 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+Overview
 
-# Getting Started
+This is a weather application built with React Native that allows users to search for a city's weather, view the current forecast and upcoming days, and see hourly weather details. The app utilizes WeatherAPI to fetch weather data, and Redux-Saga is implemented for state management and caching of API data.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Features
 
-## Step 1: Start the Metro Server
+HomeScreen:
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Search for a city using a search bar with an autocomplete feature.
+Display the current weather conditions and a 3-day weather forecast.
+Navigate to the next 4 days of weather forecast by tapping an arrow button.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+WeatherDetail Screen:
 
-```bash
-# using npm
-npm start
+Displays hourly weather details for the selected day.
+Shows the current weather forecast along with hourly changes.
+Caching: Implemented using Redux-Saga to cache the fetched weather data for improved performance and reduced API calls.
 
-# OR using Yarn
-yarn start
-```
+Screens
 
-## Step 2: Start your Application
+1. HomeScreen
+Search Bar: Allows the user to search for cities. The autocomplete API provides suggestions as the user types.
+Weather Display: Shows the current weather, temperature, and weather conditions for the selected city.
+3-Day Forecast: Displays the weather for the next three days below the current weather.
+Additional Days: Tap the arrow to view the next 4 days of the forecast.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+2. WeatherDetail Screen
+Hourly Forecast: Provides detailed weather conditions for each hour of the selected day.
+Current Weather: Displays the current forecast for the selected city.
 
-### For Android
+State Management
 
-```bash
-# using npm
-npm run android
+Redux-Saga is used for managing the app’s state and caching functionality. This helps:
 
-# OR using Yarn
-yarn android
-```
+Efficiently fetch and cache weather data to avoid unnecessary API requests.
+Handle asynchronous actions like fetching weather data in a clean and manageable way.
 
-### For iOS
+Key Redux-Saga Features:
 
-```bash
-# using npm
-npm run ios
+API Request: Saga listens for actions like fetching weather data and makes the API call to WeatherAPI.
 
-# OR using Yarn
-yarn ios
-```
+Caching: If the weather data for a specific city is already cached, it uses the stored data instead of making a new API request.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Error Handling: Manages API call errors gracefully and updates the app state accordingly.
